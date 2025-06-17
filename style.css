@@ -1,0 +1,36 @@
+:root {
+    --main-color: #f6b429;
+    --vinho: #7f1d12;
+    --bg: #010103;
+    --border: #31140c;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+@media (max-widht: 1200px) {
+    html {
+        font-size: 55%;
+    }
+}
+
+@media (max-widht: 991px) {
+    html {
+        font-size: 50%;
+    }
+}
+
+@media (max-widht: 768px) {
+    html {
+        font-size: 45%;
+    }
+}
+
+@media (max-widht: 450px) {
+    html {
+        font-size: 40%;
+    }
+}

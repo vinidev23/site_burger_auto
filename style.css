@@ -2,7 +2,7 @@
     --main-color: #f6b429;
     --vinho: #7f1d12;
     --bg: #010103;
-    --border: #31140c;
+    --border: 0.1rem solid #31140c;
 }
 
 html {
@@ -34,3 +34,172 @@ html {
         font-size: 40%;
     }
 }
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: 0.2 linear;
+    font-family: "Cal Sans", sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg);
+    overflow-x: hidden;
+}
+
+section {
+    padding: 2rem 6rem;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    border-bottom: var(--border);
+    background-color: var(--vinho);
+}
+
+.header section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.logoimg {
+    width: 110px;
+    height: auto;
+}
+
+.navbar a {
+    margin: 0 1.7rem;
+    font-size: 1.8rem;
+    color: white;
+}
+
+.navbar a:hover {
+    color: var(--main-color);
+    border-bottom: 0.1rem solid var(--main-color);
+    padding-bottom: 0.3rem;
+    font-size: 1.9rem;
+}
+
+.icons img {
+    margin: 0 1rem;
+    cursor: pointer;
+    width: 3rem;
+    height: 3rem;
+}
+
+.icons img:hover {
+    width: 4rem;
+    height: 4rem;
+}
+
+.header .icons #produtos-btn {
+    color: #fff;
+    cursor: pointer;
+    font-size: 2.5rem;
+    margin-left: 1.5rem;
+    display: none;
+}
+
+.btn {
+    background: var(--main-color);
+    color: white;
+    padding: 0.7rem 1.7rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin: 1rem;
+    display: inline-block;
+    text-transform: none;
+    border-radius: 0.5rem;
+}
+
+.btn:hover {
+    background: #FFBF00;
+    letter-spacing: 0.01rem;
+}
+
+.home-container {
+    background: url(capa1.jpeg) no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.home-container section {
+    display: flex;
+    align-items: center;
+    padding: 0 6rem;
+}
+
+.content {
+    max-width: 45rem;
+}
+
+.content h3 {
+    color: white;
+    font-size: 5rem;
+    margin-top: 15rem;
+    text-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.content p {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 100;
+    line-height: 1.5;
+    padding: 1rem 0;
+    text-transform: none;
+}
+
+.content p::first-letter {
+    text-transform: uppercase;
+}
+
+.title {
+    font-size: 4rem;
+    color: var(--main-color);
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+    padding-top: 5rem;
+}
+
+.title span {
+    color: white;
+    text-transform: uppercase;
+}
+
+.sobre .row {
+    display: flex;
+    align-items: center;
+    background: var(--vinho);
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 0.5rem;
+}
+
+.sobre .row .container-img .capa {
+    width: 100%;
+    max-width: 500px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    display: block;
+    margin: 0 auto;
+}
+

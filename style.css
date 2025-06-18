@@ -414,6 +414,7 @@ section {
     font-size: 1.2rem;
     text-decoration: line-through;
     font-weight: lighter;
+    margin-left: 0.3rem;
 }
 
 .produtos .box-container .box:hover {
@@ -461,5 +462,6 @@ section {
 .footer .share img:hover {
     background: var(--main-color);
     transform: translateY(0.3rem);
+    transition: 0.5s;
 }
 

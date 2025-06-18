@@ -21,19 +21,166 @@ html {
     html {
         font-size: 50%;
     }
+
+     section {
+        padding: 2rem 4rem;
+    }
+
+    .header section {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+
+    .home-container section {
+        padding: 0 4rem;
+    }
+
+    .content h3 {
+        font-size: 3.8rem;
+    }
+
+    .title {
+        font-size: 3.5rem;
+    }
 }
 
 @media (max-widht: 768px) {
     html {
         font-size: 45%;
     }
+
+    .header .icons #produtos.produtos-btn {
+        display: inline-block;
+    }
+
+    .header .navbar {
+        position: absolute;
+        top: 100%;
+        right: -100%;
+        background: var(--black);
+        width: 30rem;
+        height: calc(100vh - 9.5rem);
+        display: block;
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+        padding-top: 2rem;
+    }
+
+    .header .navbar.active {
+        right: 0;
+    }
+
+     .header .navbar a {
+        color: white;
+        display: block;
+        margin: 1.5rem;
+        padding: 0.5rem 1.5rem;
+        font-size: 2rem;
+        border-bottom: 0.1rem solid rgba(255,255,255,0.1);
+    }
+
+    .header .navbar a:last-child {
+        border-bottom: none;
+    }
+
+    .header .navbar a:hover {
+        color: var(--main-color);
+        border-bottom-color: var(--main-color);
+        padding-bottom: 0.5rem;
+        font-size: 2rem;
+        transition: 0.5s;
+    }
+
+    .home-container section {
+        text-align: center;
+        justify-content: center;
+        padding-top: 10rem;
+    }
+
+    .content {
+        max-width: 90%;
+    }
+
+    .content h3 {
+        font-size: 3.5rem;
+        margin-top: 0;
+    }
+
+    .content p {
+        font-size: 1.5rem;
+    }
+
+    .btn {
+        font-size: 1.6rem;
+        padding: 0.8rem 2rem;
+    }
+
+    .sobre .row .container-img, .sobre .row .content {
+        flex: 1 1 100%;
+    }
+
+     .sobre .row .content {
+        text-align: center;
+    }
+
 }
 
 @media (max-widht: 450px) {
     html {
         font-size: 40%;
     }
+
+    section {
+        padding: 2rem 2rem;
+    }
+
+    .header section {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .home-container section {
+        padding: 0 2rem;
+    }
+
+    .content h3 {
+        font-size: 3rem;
+    }
+    .content p {
+        font-size: 1.4rem;
+    }
+
+    .title {
+        font-size: 3rem;
+    }
+
+    .box-container {
+        grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+    }
+    .produtos .box-container .box {
+        padding: 2rem;
+    }
+    .produtos .box-container .box img.cardapio {
+        width: 12rem;
+        height: 12rem;
+    }
+
+    .footer .share img {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
 }
+
+.navbar.active {
+
+    flex-direction: column;
+    text-align: center;
+}
+
+.navbar .active a {
+    margin: 0.5rem 0;
+    display: flex
+}
+
 
 * {
     margin: 0;
@@ -92,6 +239,7 @@ section {
     border-bottom: 0.1rem solid var(--main-color);
     padding-bottom: 0.3rem;
     font-size: 1.9rem;
+    transition: 0.5s;
 }
 
 .icons img {
@@ -104,6 +252,7 @@ section {
 .icons img:hover {
     width: 4rem;
     height: 4rem;
+    transition: 0.5s;
 }
 
 .header .icons #produtos-btn {
@@ -129,6 +278,7 @@ section {
 .btn:hover {
     background: #FFBF00;
     letter-spacing: 0.01rem;
+    transition: 0.5s;
 }
 
 .home-container {
@@ -201,5 +351,115 @@ section {
     border-radius: 0.5rem;
     display: block;
     margin: 0 auto;
+}
+
+.sobre .row .content {
+    flex: 1 1 45rem;
+    padding: 2rem;
+    text-align: center;
+}
+
+.sobre .row .content h3 {
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.sobre .row .content p {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 0.5rem 0;
+    line-height: 1.7rem;
+    text-transform: none;
+}
+
+.box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 1.5rem;
+}
+
+.produtos .box-container .box {
+    text-align: center;
+    border: var(--border);
+    padding: 3rem;
+    cursor: pointer;
+    background-color: var(--vinho);
+    border-radius: 0.5rem;
+}
+
+.produtos .box-container .box img.cardapio {
+    border-radius: 50%;
+    width: 15rem;
+    height: 15rem;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.produtos .box-container .box h3 {
+    color: white;
+    font-size: 2rem;
+    padding: 1rem 0;
+}
+
+.produtos .box-container .box .price {
+    color: white;
+    font-size: 1.7rem;
+    padding: 0.5rem 0;
+    margin-bottom: 1rem;
+}
+
+.produtos .box-container .box .price span {
+    font-size: 1.2rem;
+    text-decoration: line-through;
+    font-weight: lighter;
+}
+
+.produtos .box-container .box:hover {
+    background-color: var(--main-color);
+    transform: translateY(0.5rem);
+    transition: 0.5s;
+}
+
+.produtos .box-container .box:hover>* {
+    color: var(--vinho);
+}
+
+.rede_social {
+    width: 3rem;
+    height: 3rem;
+}
+
+.rodape {
+    color: white;
+}
+
+.footer {
+    text-align: center;
+    padding: 2rem;
+    color: white;
+    border: var(--border);
+    margin-top: 3rem;
+}
+
+.footer .share {
+    padding: 1.5rem 0;
+}
+
+.footer .share img {
+    margin: 0.5rem;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 0.8rem;
+    background-color: #333;
+    width: 3.7rem;
+    height: 3.7rem;
+    box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.5);
+}
+
+.footer .share img:hover {
+    background: var(--main-color);
+    transform: translateY(0.3rem);
 }
 

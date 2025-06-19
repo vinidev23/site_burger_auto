@@ -465,3 +465,122 @@ section {
     transition: 0.5s;
 }
 
+.checkout-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000
+}
+
+.checkout-modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: var(--vinho);
+    color: white;
+    padding: 30px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.modal-content h2, .modal-content h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--main-color);
+}
+
+.modal-content label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.modal-content input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background-color: #444;
+    color: white;
+}
+
+.order-details ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+}
+
+.order-details ul li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.order-details p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 15px;
+    color: var(--main-color);
+}
+
+.payment-options {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.payment-options input[type="radio"] {
+    margin-right: 10px;
+}
+
+.payment-options label {
+    display: inline-block;
+    margin-right: 20px;
+    font-weight: normal;
+}
+
+.confirm-ordem-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.confirm-ordem-btn:hover {
+    background-color: darken(var(--main-color), 10%);
+    opacity: 0.9;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.close-button:hover {
+    color: white;
+}
+

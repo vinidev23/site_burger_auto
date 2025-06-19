@@ -92,6 +92,34 @@
         </div>
     </footer>
 
+    <div class = "checkout-modal" id="checkout-modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-checkout-modal">&times;</span>
+            <h2>Finalizar Pedido</h2>
+            <div class="order-details">
+                <label for="customer-name">Seu Nome:</label>
+                <input type="text" id="customer-name" placeholder="Digite seu nome" required>
+
+                <h3>Seu pedido:</h3>
+                <ul id="cart-items-list"></ul>
+                <p>Total: <span id="total-price">R$ 0,00</span></p>
+
+                <h3>Forma de Pagamento:</h3>
+                <div class="payment-options">
+                    <input type="radio" id="payment-pix" name="payment-method" value="Pix" required>
+                    <label for="payment-pix">Pix</label><br>
+
+                    <input type="radio" id="payment-debit" name="payment-method" value="Débito" required>
+                    <label for="payment-debit">Débito</label><br>
+
+                    <input type="radio" id="payment-credit" name="payment-method" value="Crédito" required>
+                    <label for="payment-credit">Crédito</label><br>
+                </div>
+            </div>
+            <button class="btn confirm-order-btn" id="confirm-order-btn">Confirmar Pedido e Enviar via Whatsapp</button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

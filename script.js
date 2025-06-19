@@ -22,12 +22,20 @@ addToCartButtons.forEach(button => {
         event.preventDefault();
         let itemBox = button.closest('.box');
         let itemName = itemBox.querySelector('h3').innerText;
-        let itemPriceText = itemBox.querySelector('.price').innerText.split(' ')[0];
+
+        let rawPriceElement = itemBox.querySelector('.price');
+        let itemPriceText = rawPriceElement.firstChild.textContent.trim();
         let itemPrice = parseFloat(itemPriceText.replace('R$', '').replace(',', '.'));
 
+        if (isNaN(itemPrice)) {
+            console.error("Erro: Preço não pôde ser parseado para o item:", itemName, "Texto do preço original:", rawPriceElement.innerText);
+            alert("Não foi possível adicionar o item ao carrinho devido a um erro no preço.");
+            return;
+        }
+
         let item = {
-            name:itemName,
-            price:itemPrice
+            name: itemName,
+            price: itemPrice
         };
 
         cart.push(item);
@@ -43,13 +51,13 @@ function updateCartCount() {
 }
 
 cartIcon.addEventListener('click', () => {
-    if(cart.length === 0) {
+    if (cart.length === 0) {
         alert('Seu carrinho está vazio! Adicione seus produtos antes de finalizar seu pedido.');
         return;
     }
 
-displayCartItems();
-checkoutModal.classList.add('active');    
+    displayCartItems();
+    checkoutModal.classList.add('active');
 });
 
 closeCheckoutModalBtn.addEventListener('click', () => {
@@ -57,7 +65,7 @@ closeCheckoutModalBtn.addEventListener('click', () => {
 });
 
 window.addEventListener('click', (event) => {
-    if(event.target === checkoutModal) {
+    if (event.target === checkoutModal) {
         checkoutModal.classList.remove('active');
     }
 })
@@ -67,24 +75,24 @@ function displayCartItems() {
     let total = 0;
 
     if (cart.length === 0) {
-        cartItemsList.innerHTML = '<li>Nenhum item no carrinho.<li>';
+        cartItemsList.innerHTML = '<li>Nenhum item no carrinho.</li>';
         totalPriceSpan.innerText = 'R$ 0,00';
         return;
     }
 
-cart.forEach(item => {
-    const li = document.createElement('li');
-    li.innerHTML = `<span>${item.name}</span><span>R$ ${item.price.toFixed(2).replace('.', ',')}</span>`;
-    cartItemsList.appendChild(li);
-    total += item.price;
-});
+    cart.forEach(item => {
+        const li = document.createElement('li');
+        li.innerHTML = `<span>${item.name}</span><span>R$ ${item.price.toFixed(2).replace('.', ',')}</span>`;
+        cartItemsList.appendChild(li);
+        total += item.price;
+    });
 
-totalPriceSpan.innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+    totalPriceSpan.innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
 }
 
 confirmOrderBtn.addEventListener('click', () => {
     const customerName = customerNameInput.value.trim();
-    const selectedPaymentMethod = document.querySelector('input[name="payment-method]:checked');
+    const selectedPaymentMethod = document.querySelector('input[name="payment-method"]:checked');
 
     if (!customerName) {
         alert('Por favor, preencha o seu nome para finalizar o pedido.');
@@ -96,39 +104,38 @@ confirmOrderBtn.addEventListener('click', () => {
         return;
     }
 
-const paymentMethod = selectedPaymentMethod.value;
-const totalPrice = totalPriceSpan.innerText;
+    const paymentMethod = selectedPaymentMethod.value;
+    const totalPrice = totalPriceSpan.innerText;
 
-const now = new Date();
-const dateOptions = { day:'2-digit', month:'2-digit', year:'numeric' };
-const timeOptions = { hour:'2-digit', minute:'2-digit', hour12:false };
-const formattedDate = now.toLocaleDateString('pt-BR', dateOptions);
-const formattedTime = now.toLocaleTimeString('pt-BR', timeOptions);
+    const now = new Date();
+    const dateOptions = { day: '2-digit', month: '2-digit', year: 'numeric' };
+    const timeOptions = { hour: '2-digit', minute: '2-digit', hour12: false };
+    const formattedDate = now.toLocaleDateString('pt-BR', dateOptions);
+    const formattedTime = now.toLocaleTimeString('pt-BR', timeOptions);
 
-let message = `*NOVO PEDIDO - BURGER DEV'S*\n\n`;
-message += `*Nome do Cliente:* ${customerName}\n\n`;
-message += `*Itens do Pedido:*\n`;
-cart.forEach(item => {
-    message += `- ${item.name} (R$ ${item.price.toFixed(2).replace('.', ',')})*\n`;
-});
-message += `\n*Total:* ${totalPrice}\n`;
-message += `*Forma de Pagamento:* ${paymentMethod}\n\n`;
-message += `*Data/hora do pedido:* ${formattedDate} às ${formattedTime}\n\n`;
-message += `Aguardando confirmação!`;
+    let message = `*NOVO PEDIDO - BURGER DEV'S*\n\n`;
+    message += `*Nome do Cliente:* ${customerName}\n\n`;
+    message += `*Itens do Pedido:*\n`;
+    cart.forEach(item => {
+        message += `- ${item.name} (R$ ${item.price.toFixed(2).replace('.', ',')})\n`;
+    });
+    message += `\n*Total:* ${totalPrice}\n`;
+    message += `*Forma de Pagamento:* ${paymentMethod}\n\n`;
+    message += `*Data/Hora do Pedido:* ${formattedDate} às ${formattedTime}\n\n`;
+    message += `Aguardando confirmação!`;
 
-const encodedMessage = encodeURIComponent(message);
-const phoneNumber = '5518981039015';
-const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    const encodedMessage = encodeURIComponent(message);
+    const phoneNumber = '5518981039015';
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(whatsappURL, '_blank');
 
-window.open(whatsappURL, '_blank');
+    cart = [];
+    updateCartCount(); 
+    checkoutModal.classList.remove('active');
+    customerNameInput.value = '';
+    document.querySelectorAll('input[name="payment-method"]').forEach(radio => radio.checked = false);
 
-cart = [];
-updateCartCount();
-checkoutModal.classList.remove('active');
-customerNameInput.value = '';
-document.querySelectorAll('input[name="payment-method"]').forEach(radio => radio.checked = false);
-
-alert("Pedido enviado ao WhatsApp!");
+    alert("Pedido enviado ao WhatsApp! Aguarde a confirmação.");
 });
 
 updateCartCount();
